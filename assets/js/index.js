@@ -8,16 +8,28 @@ Les images à insérer sont dans le répertoire ../back/images/,
 vous trouverez leurs noms et descriptions dans les JSON téléchargés.
 */
 /* Exemple de code d'utilisation de fetch :
+
 */
-fetch("../back/guitars.json")
+
+const header = document.querySelector('header');
+const monH1 = document.createElement('h1');
+
+fetch('./back/guitars.json')
   .then(function (res) {
     if (res.ok) {
       return res.json();
     }
   })
-  .then(data => {
+  .then(datas => {
     // Utilisation des données dé-jsonifiées dans l'objet data
-    console.table(data);
+    datas.forEach((data) => {
+      console.log(data.name);
+      //header.innerHTML += `<h1>${data.name}</h1>`;
+    });
+
+
+
+    // console.table(datas);
     // Regardez la structure du json, comprenez son contenu, intégrez-le
     // dans votre HTML.
   })
@@ -26,3 +38,6 @@ fetch("../back/guitars.json")
     console.error("Something goes wrong!");
     console.error(error);
   });
+
+
+  
