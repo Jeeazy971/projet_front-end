@@ -132,7 +132,7 @@ header {
 
 main {
   width: 100%;
-  min-height: 50vh;
+  height: 100vh;
   padding: 2rem;
 }
 
@@ -254,6 +254,12 @@ main .aside-guitar .content-aside > .guitar-aside img {
     margin-left: 1rem;
   }
 
+  main {
+    width: 100%;
+    height: 270vh;
+    padding: 2rem;
+  }
+
   main .main-guitar {
     flex-direction: column;
   }
@@ -284,7 +290,7 @@ main .aside-guitar .content-aside > .guitar-aside img {
 
   main .aside-guitar {
     min-width: 20%;
-    max-height: 137vh;
+    max-height: 145vh;
     padding: 1rem;
     border-radius: 1rem;
   }
@@ -344,6 +350,12 @@ main .aside-guitar .content-aside > .guitar-aside img {
 
   .infos p {
     margin-left: 1rem;
+  }
+
+  main {
+    width: 100%;
+    min-height: 530vh;
+    padding: 2rem;
   }
 
   main .main-guitar {
@@ -409,7 +421,6 @@ h3 {
 /*--------- studio ------------*/
 
 .studio {
-  box-sizing: border-box;
   margin: 30px 30px 30px 30px;
 }
 
@@ -423,7 +434,6 @@ h3 {
   row-gap: 20px;
 }
 .container-studio {
-  box-sizing: border-box;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -452,6 +462,7 @@ h3 {
 /*--------- footer ------------*/
 
 footer {
+  width: 100%;
   background: #f2f2f2;
   display: flex;
   padding-top: 20px;
@@ -477,6 +488,7 @@ footer a {
 }
 
 /*Small devices */
+
 @media only screen and (max-width: 600px) {
   .container-studio {
     width: 100%;
@@ -484,5 +496,6 @@ footer a {
 
   footer {
     display: block;
+    height: 100vh;
   }
 }

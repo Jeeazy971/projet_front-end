@@ -13,19 +13,6 @@ vous trouverez leurs noms et descriptions dans les JSON téléchargés.
 
 // DARCY
 
-fetch("./back/guitars.json")
-  .then(function (res) {
-    if (res.ok) {
-      return res.json();
-    }
-  })
-  .then((data) => {})
-  .catch(function (error) {
-    // Gestion des erreurs
-    console.error("Something goes wrong!");
-    console.error(error);
-  });
-
 fetch("./back/studio.json")
   .then(function (res) {
     if (res.ok) {
@@ -34,7 +21,6 @@ fetch("./back/studio.json")
   })
   .then((data) => {
     // Utilisation des données dé-jsonifiées dans l'objet data
-    console.table(data);
     // Regardez la structure du json, comprenez son contenu, intégrez-le
     // dans votre HTML.
 
@@ -69,6 +55,11 @@ fetch("./back/studio.json")
 
 // JOSUE
 
+/**
+ *
+ * TODO RECUPERATION DE L'API SEPAREMENT
+ *
+ * **/
 const urlGuitar = "./back/guitars.json";
 const urlPopular = "./back/populars.json";
 
@@ -79,6 +70,13 @@ const contentGuitar = document.querySelector(
 const contentAside = document.querySelector(".aside-guitar > .content-aside");
 const guitarAside = document.querySelector(".guitar-aside");
 
+/**
+ *
+ * TODO: FONCTION ASYNCHRONE
+ *
+ *
+ **/
+
 const getAllGuitar = async () => {
   const response = await fetch(urlGuitar);
   const datas = await response.json();
@@ -87,15 +85,21 @@ const getAllGuitar = async () => {
 
 // FETCH GUITARS
 
+/**
+ * 
+ *  TODO: affichage des guitars
+ * 
+ * **/
+
 const displayAllGuitar = (guitars) => {
   guitars.forEach((guitar) => {
     try {
       contentGuitar.innerHTML += `
-          <div class="electric-guitar">
+          <article class="electric-guitar">
             <img src=./assets/images/guitares/${guitar.imageUrl} alt=${guitar.imageUrl}>
             <p>${guitar.name}</p>
             <p>${guitar.price} € ou <span class="price-bold">${guitar.monthly} € / mois</span></p>
-          </div>
+          </article>
           `;
     } catch (error) {
       console.log(error.message);
@@ -103,7 +107,7 @@ const displayAllGuitar = (guitars) => {
   });
 };
 
-// FETCH POPULARS GUITARS
+// FETCH POPULAR GUITARS
 
 const getAllPopular = async () => {
   const response = await fetch(urlPopular);
@@ -111,17 +115,27 @@ const getAllPopular = async () => {
   displayAllPopular(datas);
 };
 
+/**
+ * 
+ *  TODO: affichage des articles populaire
+ * 
+ * **/
+
 const displayAllPopular = (popularGuitar) => {
   for (let popular of popularGuitar) {
-    contentAside.innerHTML += `
-      <div class="guitar-aside">
-        <img src=./assets/images/guitares/${popular.imageUrl} alt=${popular.imageUrl}>
-        <div>
-          <p>${popular.altTxt}</p>
-          <p>${popular.price} € ou <span class="price-bold">${popular.monthly} € / mois</span></p>
-          <i class="fa-solid fa-star"></i>
-        </div>
-      </div>`;
+    try {
+      contentAside.innerHTML += `
+    <article class="guitar-aside">
+      <img src=./assets/images/guitares/${popular.imageUrl} alt=${popular.imageUrl}>
+      <div>
+        <p>${popular.altTxt}</p>
+        <p>${popular.price} € ou <span class="price-bold">${popular.monthly} € / mois</span></p>
+        <i class="fa-solid fa-star"></i>
+      </div>
+    </article>`;
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 };
 
