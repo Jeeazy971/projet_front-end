@@ -16,8 +16,10 @@ const urlGuitar = "./back/guitars.json";
 const urlPopular = "./back/populars.json";
 
 const contentGuitar = document.querySelector(".section-guitar > .content-guitar");
-const guitarAside = document.querySelector(".aside-guitar > .content-aside");
+// const electricGuitar = document.querySelector('.electric-guitar');
 
+const contentAside = document.querySelector(".aside-guitar > .content-aside");
+const guitarAside = document.querySelector('.guitar-aside');
 
 const getAllGuitar = async () => {
   const response = await fetch(urlGuitar);
@@ -28,16 +30,15 @@ const getAllGuitar = async () => {
 // FETCH GUITARS
 
 const displayAllGuitar = (guitars) => {
-  guitars.forEach((electricGuitar) => {
+  guitars.forEach((guitar) => {
     try {
       contentGuitar.innerHTML += `
           <div class="electric-guitar">
-            <img src=./assets/images/guitares/${electricGuitar.imageUrl} alt=${electricGuitar.imageUrl}>
-            <p>${electricGuitar.name}</p>
-            <p>${electricGuitar.price} € ou <span class="price-bold">${electricGuitar.monthly} € / mois</span></p>
+            <img src=./assets/images/guitares/${guitar.imageUrl} alt=${guitar.imageUrl}>
+            <p>${guitar.name}</p>
+            <p>${guitar.price} € ou <span class="price-bold">${guitar.monthly} € / mois</span></p>
           </div>
           `;
-      contentGuitar.append(contentGuitar);
     } catch (error) {
       console.log(error.message);
     }
@@ -46,26 +47,26 @@ const displayAllGuitar = (guitars) => {
 
 // FETCH POPULARS GUITARS
 
-const getAllPopluars = async () => {
+const getAllPopular = async () => {
   const response = await fetch(urlPopular);
   const datas = await response.json();
-  return displayAllPopular(datas);
+  displayAllPopular(datas);
 };
 
 const displayAllPopular = (popularGuitar) => {
-  popularGuitar.forEach((popular) => {
-    guitarAside.innerHTML += `
+
+  for(let popular of popularGuitar){
+    contentAside.innerHTML += `
       <div class="guitar-aside">
-      <img src=./assets/images/guitares/${popular.imageUrl} alt=${popular.imageUrl}>
-      <p>${popular.name}</p>
-      <p>${popular.price} € ou <span class="price-bold">${popular.monthly} € / mois</span></p>
-      </div>
-    `;
-    guitarAside.append(guitarAside);
-  });
+        <img src=./assets/images/guitares/${popular.imageUrl} alt=${popular.imageUrl}>
+        <div>
+          <p>${popular.altTxt}</p>
+          <p>${popular.price} € ou <span class="price-bold">${popular.monthly} € / mois</span></p>
+          <i class="fa-solid fa-star"></i>
+        </div>
+      </div>`;
+  }
 };
 
-getAllPopluars();
-
+getAllPopular();
 getAllGuitar();
-displayAllGuitar();
