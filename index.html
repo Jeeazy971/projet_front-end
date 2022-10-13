@@ -1,28 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Changer le titre -->
+    <title>Music Dream</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Appeler Font awesome et le(s) CSS et la fonte Raleway -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"> 
+    <script
+      src="https://kit.fontawesome.com/d1e5ed8be2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Changer le titre -->
-  <title>Document</title>
-  <!-- Appeler Font awesome et le(s) CSS et la fonte Raleway -->
-</head>
-
-<body>
-  <header></header>
-  <main>
-    <section></section>
-    <aside></aside>
-    <section></section>
-  </main>
-  <footer></footer>
-  <!-- TODO la structure de la page d'accueil -->
-  <!-- et son remplissage par API Fetch -->
-  <!-- Pensez à utiliser le web sémantique ! -->
-  <!-- Vos codes HTML et CSS doivent passer la validation ! -->
-  <script src="./assets/js/index.js"></script>
-</body>
-
+  <body>
+    <header>
+      <div class="section-infos">
+        <div class="logo-title">
+          <div class="head-content">
+            <img
+              src="./assets/images/logo/logo_large.png"
+              alt="Logo music dream"
+              class="logo-dream"
+            />
+            <h1>Trouvez l'instrument de vos rêves</h1>
+            <p>De la musique plein la tête</p>
+          </div>
+  
+          <div class="search-content">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="rechercher" id="rechercher" />
+            <button class="button-search" type="submit">Rechercher</button>
+          </div>
+        </div>
+        <div class="filter-section">
+          <div class="filter-header">
+            <p>Filtres</p>
+            <ul class="filter-button">
+              <li><button class="button-filtering"><i class="fa-solid fa-money-bill-wave"></i> Économique</button></li>
+              <li><button class="button-filtering"><i class="fa-solid fa-user-ninja"></i> Pro</button></li>
+              <li><button class="button-filtering"><i class="fa-solid fa-money-bill-1-wave"></i> Bonnes affaires</button></li>
+              <li><button class="button-filtering"><i class="fa-solid fa-wand-sparkles"></i> Occasions</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="navigation">
+        <nav>
+          <ul>
+            <li><a class="nav-instruments" href="#">Nos instruments</a></li>
+            <li><a class="nav-instruments" href="#">Studios</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="infos">
+        <i class="fa-solid fa-circle-info"></i>
+        <p>Plus de 200 instruments sont disponibles immédiatement</p>
+      </div>
+      <div class="main-guitar">
+        <section class="section-guitar">
+          <h2>Les guitares électriques</h2>
+          <div class="content-guitar">
+          </div>
+          <a href="#">Afficher plus</a>
+          
+        </section>
+        <aside class="aside-guitar">
+          <div class="title-aside">
+              <h2>Les plus populaires</h2>
+              <i class="fa-solid fa-star"></i>
+          </div>
+          <div class="content-aside">
+          </div>
+        </aside>
+      </div>
+    </main>
+    <footer></footer>
+    <!-- TODO la structure de la page d'accueil -->
+    <!-- et son remplissage par API Fetch -->
+    <!-- Pensez à utiliser le web sémantique ! -->
+    <!-- Vos codes HTML et CSS doivent passer la validation ! -->
+    <script src="./assets/js/index.js"></script>
+  </body>
 </html>
