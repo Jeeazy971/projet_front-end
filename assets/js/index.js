@@ -9,17 +9,75 @@ Les images à insérer sont dans le répertoire ../back/images/,
 vous trouverez leurs noms et descriptions dans les JSON téléchargés.
 */
 /* Exemple de code d'utilisation de fetch :
+ */
 
-*/
+// DARCY
+
+fetch("./back/guitars.json")
+  .then(function (res) {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .then((data) => {})
+  .catch(function (error) {
+    // Gestion des erreurs
+    console.error("Something goes wrong!");
+    console.error(error);
+  });
+
+fetch("./back/studio.json")
+  .then(function (res) {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .then((data) => {
+    // Utilisation des données dé-jsonifiées dans l'objet data
+    console.table(data);
+    // Regardez la structure du json, comprenez son contenu, intégrez-le
+    // dans votre HTML.
+
+    let index = 0;
+
+    for (let item of data) {
+      let cName = "num" + index;
+
+      let container = document.createElement("div");
+      container.classList.add("container-studio", cName);
+      document.querySelector(".container").appendChild(container);
+
+      let studio = document.createElement("img");
+      studio.src = `./assets/images/guitares/${item.imageUrl}`;
+      studio.alt = item.altTxt;
+      studio.title = item.title;
+
+      let textImg = document.createElement("p");
+      textImg.classList.add("text-studio");
+      textImg.innerHTML = item.title;
+      document.querySelector("." + cName).appendChild(studio);
+      document.querySelector("." + cName).appendChild(textImg);
+
+      index++;
+    }
+  })
+  .catch(function (error) {
+    // Gestion des erreurs
+    console.error("Something goes wrong!");
+    console.error(error);
+  });
+
+// JOSUE
 
 const urlGuitar = "./back/guitars.json";
 const urlPopular = "./back/populars.json";
 
-const contentGuitar = document.querySelector(".section-guitar > .content-guitar");
-// const electricGuitar = document.querySelector('.electric-guitar');
+const contentGuitar = document.querySelector(
+  ".section-guitar > .content-guitar"
+);
 
 const contentAside = document.querySelector(".aside-guitar > .content-aside");
-const guitarAside = document.querySelector('.guitar-aside');
+const guitarAside = document.querySelector(".guitar-aside");
 
 const getAllGuitar = async () => {
   const response = await fetch(urlGuitar);
@@ -54,8 +112,7 @@ const getAllPopular = async () => {
 };
 
 const displayAllPopular = (popularGuitar) => {
-
-  for(let popular of popularGuitar){
+  for (let popular of popularGuitar) {
     contentAside.innerHTML += `
       <div class="guitar-aside">
         <img src=./assets/images/guitares/${popular.imageUrl} alt=${popular.imageUrl}>
