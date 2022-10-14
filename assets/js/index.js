@@ -81,7 +81,6 @@ const displayStar = (stars_number) => {
 /**
  *
  * TODO: FONCTION ASYNCHRONE GETALLGUITAR
- * TODO: FETCH GUITARS
  *
  *
  **/
@@ -121,7 +120,12 @@ const displayAllGuitar = (guitars) => {
   });
 };
 
-// FETCH POPULAR GUITARS
+/**
+ *
+ * TODO: FONCTION ASYNCHRONE FETCH POPULAR GUITARS
+ *
+ *
+ **/
 
 const getAllPopular = async () => {
   const response = await fetch(urlPopular);
