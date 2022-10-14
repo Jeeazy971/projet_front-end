@@ -1,4 +1,4 @@
-# projet_front-end
+# MUSIC DREAM
 
 Projet front réalisé par Josué et Darcy.
 
