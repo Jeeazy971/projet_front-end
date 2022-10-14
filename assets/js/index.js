@@ -1,18 +1,6 @@
 "use strict";
-/*
-Utilisez l'API Fetch pour collecter les données dans le backend.
-Les fichiers à récupérer sont :
-../back/guitars.json
-../back/populars.json
-../back/studio.json
-Les images à insérer sont dans le répertoire ../back/images/,
-vous trouverez leurs noms et descriptions dans les JSON téléchargés.
-*/
-/* Exemple de code d'utilisation de fetch :
- */
 
 // DARCY
-
 fetch("./back/studio.json")
   .then(function (res) {
     if (res.ok) {
@@ -60,6 +48,7 @@ fetch("./back/studio.json")
  * TODO RECUPERATION DE L'API SEPAREMENT
  *
  * **/
+
 const urlGuitar = "./back/guitars.json";
 const urlPopular = "./back/populars.json";
 
@@ -72,17 +61,16 @@ const guitarAside = document.querySelector(".guitar-aside");
 
 // AFFICHE MES ETOILES
 const displayStar = (stars_number) => {
-
   let star = "";
   let result_star = 5 - stars_number;
 
   // BOUCLE LE NOMBRE D'ETOILE A AFFICHER
-  for(let i= 0; i < stars_number; i++) {
+  for (let i = 0; i < stars_number; i++) {
     star += `<i class="fa-solid fa-star"></i>`;
   }
 
   // BOUCLE LE NOMBRE D'ETOILE VIDE
-  for(let j = 0; j < result_star; j++) {
+  for (let j = 0; j < result_star; j++) {
     star += `<i class="fa-regular fa-star"></i>`;
   }
 
@@ -92,10 +80,13 @@ const displayStar = (stars_number) => {
 
 /**
  *
- * TODO: FONCTION ASYNCHRONE
+ * TODO: FONCTION ASYNCHRONE GETALLGUITAR
+ * TODO: FETCH GUITARS
  *
  *
  **/
+
+// 
 
 const getAllGuitar = async () => {
   const response = await fetch(urlGuitar);
@@ -103,12 +94,10 @@ const getAllGuitar = async () => {
   return displayAllGuitar(datas);
 };
 
-// FETCH GUITARS
-
 /**
- * 
+ *
  *  TODO: affichage des guitars
- * 
+ *
  * **/
 
 const displayAllGuitar = (guitars) => {
@@ -116,9 +105,13 @@ const displayAllGuitar = (guitars) => {
     try {
       contentGuitar.innerHTML += `
           <article class="electric-guitar">
-            <img src=./assets/images/guitares/${guitar.imageUrl} alt=${guitar.imageUrl}>
+            <img src=./assets/images/guitares/${guitar.imageUrl} alt=${
+        guitar.imageUrl
+      }>
             <p>${guitar.name}</p>
-            <p>${guitar.price} € ou <span class="price-bold">${guitar.monthly} € / mois</span></p>
+            <p>${guitar.price} € ou <span class="price-bold">${
+        guitar.monthly
+      } € / mois</span></p>
             <span>${displayStar(guitar.stars)}</span>
           </article>
           `;
@@ -137,9 +130,9 @@ const getAllPopular = async () => {
 };
 
 /**
- * 
+ *
  *  TODO: affichage des articles populaire
- * 
+ *
  * **/
 
 const displayAllPopular = (popularGuitar) => {
@@ -147,10 +140,14 @@ const displayAllPopular = (popularGuitar) => {
     try {
       contentAside.innerHTML += `
     <article class="guitar-aside">
-      <img src=./assets/images/guitares/${popular.imageUrl} alt=${popular.imageUrl}>
+      <img src=./assets/images/guitares/${popular.imageUrl} alt=${
+        popular.imageUrl
+      }>
       <div>
         <p>${popular.altTxt}</p>
-        <p>${popular.price} € ou <span class="price-bold">${popular.monthly} € / mois</span></p>
+        <p>${popular.price} € ou <span class="price-bold">${
+        popular.monthly
+      } € / mois</span></p>
         <span>${displayStar(popular.stars)}</span>
       </div>
     </article>`;
