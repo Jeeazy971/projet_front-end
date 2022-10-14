@@ -70,6 +70,26 @@ const contentGuitar = document.querySelector(
 const contentAside = document.querySelector(".aside-guitar > .content-aside");
 const guitarAside = document.querySelector(".guitar-aside");
 
+// AFFICHE MES ETOILES
+const displayStar = (stars_number) => {
+
+  let star = "";
+  let result_star = 5 - stars_number;
+
+  // BOUCLE LE NOMBRE D'ETOILE A AFFICHER
+  for(let i= 0; i < stars_number; i++) {
+    star += `<i class="fa-solid fa-star"></i>`;
+  }
+
+  // BOUCLE LE NOMBRE D'ETOILE VIDE
+  for(let j = 0; j < result_star; j++) {
+    star += `<i class="fa-regular fa-star"></i>`;
+  }
+
+  // RETOURNE MES ETOILES + ETOILES VIDE
+  return star;
+};
+
 /**
  *
  * TODO: FONCTION ASYNCHRONE
@@ -99,6 +119,7 @@ const displayAllGuitar = (guitars) => {
             <img src=./assets/images/guitares/${guitar.imageUrl} alt=${guitar.imageUrl}>
             <p>${guitar.name}</p>
             <p>${guitar.price} € ou <span class="price-bold">${guitar.monthly} € / mois</span></p>
+            ${displayStar(guitar.stars)}
           </article>
           `;
     } catch (error) {
@@ -130,7 +151,7 @@ const displayAllPopular = (popularGuitar) => {
       <div>
         <p>${popular.altTxt}</p>
         <p>${popular.price} € ou <span class="price-bold">${popular.monthly} € / mois</span></p>
-        <i class="fa-solid fa-star"></i>
+        ${displayStar(popular.stars)}
       </div>
     </article>`;
     } catch (error) {
