@@ -119,7 +119,7 @@ const displayAllGuitar = (guitars) => {
             <img src=./assets/images/guitares/${guitar.imageUrl} alt=${guitar.imageUrl}>
             <p>${guitar.name}</p>
             <p>${guitar.price} € ou <span class="price-bold">${guitar.monthly} € / mois</span></p>
-            ${displayStar(guitar.stars)}
+            <span>${displayStar(guitar.stars)}</span>
           </article>
           `;
     } catch (error) {
@@ -151,7 +151,7 @@ const displayAllPopular = (popularGuitar) => {
       <div>
         <p>${popular.altTxt}</p>
         <p>${popular.price} € ou <span class="price-bold">${popular.monthly} € / mois</span></p>
-        ${displayStar(popular.stars)}
+        <span>${displayStar(popular.stars)}</span>
       </div>
     </article>`;
     } catch (error) {
