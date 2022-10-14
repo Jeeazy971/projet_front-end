@@ -134,7 +134,7 @@ header {
 
 main {
   width: 100%;
-  height: 100vh;
+  height: 200vh;
   padding: 2rem;
 }
 
@@ -261,15 +261,14 @@ main .aside-guitar .content-aside > .guitar-aside img {
 
   main {
     width: 100%;
-    height: 270vh;
+    height: 510vh;
     padding: 2rem;
   }
 
   main .main-guitar {
     flex-direction: column;
     justify-content: flex-start;
-    height: 500vh;
-    background: #000;
+    height: 470vh;
   }
 
   main .section-guitar {
@@ -278,7 +277,6 @@ main .aside-guitar .content-aside > .guitar-aside img {
     min-width: 100%;
     max-height: 150vh;
     border-radius: 1rem;
-    background-color: magenta;
     margin-bottom: 2rem;
   }
 
@@ -364,7 +362,7 @@ main .aside-guitar .content-aside > .guitar-aside img {
 
   main {
     width: 100%;
-    min-height: 530vh;
+    height: 470vh;
     padding: 2rem;
   }
 
@@ -372,7 +370,6 @@ main .aside-guitar .content-aside > .guitar-aside img {
     flex-direction: row;
     align-items: center;
     align-self: center;
-    background-color: coral;
     height: 450vh;
   }
 
@@ -409,7 +406,6 @@ main .aside-guitar .content-aside > .guitar-aside img {
 
   main .aside-guitar {
     max-height: 80vh;
-    background-color: aqua;
     margin: 0 auto;
   }
 
@@ -433,8 +429,6 @@ h3 {
 }
 
 /*--------- studio ------------*/
-
-
 
 .studio {
   margin: 100px 30px 30px 30px;
@@ -484,10 +478,10 @@ footer {
   width: 100%;
   background: #f2f2f2;
   display: flex;
+  justify-content: end;
   padding-top: 20px;
   padding-bottom: 30px;
   margin-top: 50px;
-  background-color: orange;
 }
 
 .section_footer {
@@ -511,7 +505,6 @@ footer a {
 
 @media screen and (max-width: 992px) {
   main .studio {
-    background-color: crimson;
     padding: 1rem;
     width: 100%;
     height: 230vh;
@@ -529,7 +522,6 @@ footer a {
     row-gap: 1rem;
     width: 100%;
     padding: 1rem;
-    background-color: aqua;
   }
 
   .container-studio {
@@ -539,7 +531,6 @@ footer a {
     border-radius: 15px;
     box-shadow: 3px 3px 5px grey;
     padding-top: 10px;
-    background: violet;
   }
   
   .container-studio p {
@@ -566,7 +557,6 @@ footer a {
 @media only screen and (max-width: 600px) {
 
   main .studio {
-    background-color: crimson;
     padding: 1rem;
     width: 100%;
     height: 155vh;
@@ -579,6 +569,6 @@ footer a {
 
   footer {
     display: block;
-    height: 100vh;
+    height: 50vh;
   }
 }
