@@ -3,20 +3,15 @@
 // DARCY
 fetch('./back/studio.json')
     .then(function (res) {
-        if (res.ok) {
-            return res.json();
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
         }
+        return res.json();
     })
     .then((data) => {
-        // Utilisation des données dé-jsonifiées dans l'objet data
-        // Regardez la structure du json, comprenez son contenu, intégrez-le
-        // dans votre HTML.
-
         let index = 0;
-
         for (let item of data) {
             let cName = 'num' + index;
-
             let container = document.createElement('div');
             container.classList.add('container-studio', cName);
             document.querySelector('.container').appendChild(container);
@@ -31,71 +26,42 @@ fetch('./back/studio.json')
             textImg.innerHTML = item.title;
             document.querySelector('.' + cName).appendChild(studio);
             document.querySelector('.' + cName).appendChild(textImg);
-
             index++;
         }
     })
     .catch(function (error) {
-        // Gestion des erreurs
         console.error('Something goes wrong!');
         console.error(error);
     });
 
 // JOSUE
-
-/**
- *
- * TODO RECUPERATION DE L'API SEPAREMENT
- *
- * **/
-
 const urlGuitar = './back/guitars.json';
 const urlPopular = './back/populars.json';
 
 const contentGuitar = document.querySelector('.section-guitar > .content-guitar');
-
 const contentAside = document.querySelector('.aside-guitar > .content-aside');
-const guitarAside = document.querySelector('.guitar-aside');
 
-// AFFICHE MES ETOILES
 const displayStar = (stars_number) => {
     let star = '';
     let result_star = 5 - stars_number;
-
-    // BOUCLE LE NOMBRE D'ETOILE A AFFICHER
     for (let i = 0; i < stars_number; i++) {
         star += `<i class="fa-solid fa-star"></i>`;
     }
-
-    // BOUCLE LE NOMBRE D'ETOILE VIDE
     for (let j = 0; j < result_star; j++) {
         star += `<i class="fa-regular fa-star"></i>`;
     }
-
-    // RETOURNE MES ETOILES + ETOILES VIDE
     return star;
 };
 
-/**
- *
- * TODO: FONCTION ASYNCHRONE GETALLGUITAR
- *
- *
- **/
-
-//
-
 const getAllGuitar = async () => {
-    const response = await fetch(urlGuitar);
-    const datas = await response.json();
-    return displayAllGuitar(datas);
+    try {
+        const response = await fetch(urlGuitar);
+        const data = await response.json();
+        return displayAllGuitar(data);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des guitares : ', error);
+    }
 };
-
-/**
- *
- *  TODO: affichage des guitars
- *
- * **/
 
 const displayAllGuitar = (guitars) => {
     guitars.forEach((guitar) => {
@@ -112,24 +78,15 @@ const displayAllGuitar = (guitars) => {
     });
 };
 
-/**
- *
- * TODO: FONCTION ASYNCHRONE FETCH POPULAR GUITARS
- *
- *
- **/
-
 const getAllPopular = async () => {
-    const response = await fetch(urlPopular);
-    const datas = await response.json();
-    displayAllPopular(datas);
+    try {
+        const response = await fetch(urlPopular);
+        const data = await response.json();
+        displayAllPopular(data);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des guitares populaires : ', error);
+    }
 };
-
-/**
- *
- *  TODO: affichage des articles populaire
- *
- * **/
 
 const displayAllPopular = (popularGuitars) => {
     for (let popular of popularGuitars) {
